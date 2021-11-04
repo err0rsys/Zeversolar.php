@@ -3,16 +3,16 @@
 //head over to https://forum.pvoutput.org to discuss it.
 
 // 		-------Manually run command-------
-//  	/usr/bin/php /home/pi/zeversolar/zever.php
+//  	/usr/bin/php /share/Web/zeversolar/zever.php
 
 //		-------Cron Script-------
 //		crontab -e
-//	*/5 * * * * /usr/bin/php /home/pi/zeversolar/zever.php
+//	*/5 * * * * /usr/local/apache/bin/php /share/Web/zeversolar/zever.php
 
 // 		-------View Log-------
-//	cat /home/pi/zeversolar/logs/zever_19-05-2019.log			//view log
-//	tail -f /home/pi/zeversolar/logs/zever-19-05-2019.log			//View log Realtime
-//	nano /home/pi/zeversolar/logs/zever-19-05-2019.log			//Edit Log
+//	cat /share/Web/zeversolar/logs/2019-05-19_zever.log			//view log
+//	tail -f /share/Web/zeversolar/logs/2019-05-19_zever.log			//View log Realtime
+//	nano /share/Web/zeversolar/logs/2019-05-19_zever.log			//Edit Log
 
 
 //-------------------------------------------------------------------------------------------------
@@ -22,8 +22,8 @@ $dataManagerIP = "192.168.x.xx";							//Inverter IP Address
 $pvOutputApiKEY = "pvoutput key";							//PvOutput Api Key
 $pvOutputSID = "pvoutput systemid";							//PvOutput System ID
 											//add Timezone info		
-$country = "Australia";
-$capitalCity ="Adelaide";
+$country = "Europe";
+$capitalCity ="Warsaw";
 
 //--------------------------------------------------------------------------------------------------
 
@@ -122,7 +122,7 @@ Echo "\n";
 // log file Output ------   attempts to contact inverter, Date, Time, V1, V2   -------
 // using the FILE_APPEND flag to append the content to the end of the file
 
-$file='zever_'.date('d-m-Y').'.log';
+$file=date('Y-m-d').'_zever.log';
 
 $logData = $attempts
                 . "," .  $date
@@ -130,7 +130,7 @@ $logData = $attempts
                 . "," .  $inverterEnergyDayTotal
                 . "," .  $inverterPowerLive;
 //file_put_contents($file, ($logData . "\r\n"), FILE_APPEND);
-file_put_contents("/home/pi/zeversolar/logs/$file", ($logData . "\r\n"), FILE_APPEND);
+file_put_contents("/share/Web/zeversolar/logs/$file", ($logData . "\r\n"), FILE_APPEND);
 
 
 Echo "And output log to $file \n";

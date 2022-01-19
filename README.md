@@ -8,3 +8,5 @@ I run as a Cron task in 5 min intervals on my Pi as below.
 crontab -e
 
 */5 * * * * /usr/bin/php /home/pi/zever.php
+
+Changes for use with QNAP server.
